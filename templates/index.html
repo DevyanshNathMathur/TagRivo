@@ -1,0 +1,344 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="TagRivo helps you inspect, assess and sanitize supported metadata in images and PDFs.">
+  <title>TagRivo — File Metadata Inspector</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#workspace">Skip to file inspector</a>
+
+  <div class="top-rule" aria-hidden="true"></div>
+
+  <header class="mast-nav">
+    <div class="container nav-inner">
+      <a class="wordmark" href="#top" aria-label="TagRivo home">
+        <span class="wordmark-sign" aria-hidden="true">T<span>R</span></span>
+
+        <span class="wordmark-copy">
+          <strong>TagRivo</strong>
+          <small>FILE PRIVACY / METADATA</small>
+        </span>
+      </a>
+
+      <nav class="site-links" aria-label="Sections">
+        <a href="#workspace">The inspector</a>
+        <a href="#method">Method</a>
+        <a href="#notes">Important notes</a>
+      </nav>
+
+      <a class="nav-cta" href="#workspace">
+        Inspect a file <span aria-hidden="true">&#8599;</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Editorial introduction -->
+    <section class="cover" aria-labelledby="cover-title">
+      <div class="container cover-grid">
+
+        <div class="cover-main">
+          <div class="edition-line">
+            <span class="edition-marker">TAGRIVO / 01</span>
+            <span>AN EVERYDAY FILE PRIVACY TOOL</span>
+          </div>
+
+          <h1 id="cover-title">
+            WHAT'S HIDING<br>
+            <span>IN YOUR FILE?</span>
+          </h1>
+
+          <p class="cover-lead">
+            Photographs and documents can carry details beyond what
+            you see on screen. TagRivo helps you find supported metadata,
+            understand possible exposure and make a separate cleaned copy.
+          </p>
+
+          <a href="#workspace" class="cover-link">
+            Go to the inspector <span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+
+        <aside class="cover-aside" aria-label="Supported files">
+          <span class="aside-caption">AT A GLANCE</span>
+
+          <div class="aside-title">
+            START WITH<br>ONE FILE.
+          </div>
+
+          <div class="aside-rule"></div>
+
+          <div class="aside-spec">
+            <span>FORMATS</span>
+            <strong>JPEG / PNG / PDF</strong>
+          </div>
+
+          <div class="aside-spec">
+            <span>FILE SIZE</span>
+            <strong>20 MB max.</strong>
+          </div>
+
+          <div class="aside-spec">
+            <span>OUTPUT</span>
+            <strong>Clean copy + reports</strong>
+          </div>
+
+          <p>
+            Keep the original. Check the result yourself before sharing.
+          </p>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- Functional inspector -->
+    <section class="inspector-section" id="workspace" aria-labelledby="inspector-heading">
+      <div class="container">
+
+        <div class="section-ribbon">
+          <span>01 <i aria-hidden="true">/</i> WORKBENCH</span>
+          <span>SUPPORTED: JPG · PNG · PDF</span>
+        </div>
+
+        <div class="inspector-title">
+          <div>
+            <p class="micro-label">FILE METADATA INSPECTOR</p>
+            <h2 id="inspector-heading">Choose. Check. Decide.</h2>
+          </div>
+          <p>Pick a file to begin. An audit does not change your original.</p>
+        </div>
+
+        <div class="workbench">
+
+          <!-- File selection panel -->
+          <div class="drop-pane">
+            <div class="upload-zone" id="uploadZone">
+
+              <div class="document-icon" aria-hidden="true">
+                <svg viewBox="0 0 78 88" fill="none" focusable="false">
+                  <path
+                    d="M14 5h36l14 14v59a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4Z"
+                    fill="#fff"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                  <path
+                    d="M50 5v14h14M22 36h30M22 47h30M22 58h19"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <circle
+                    cx="58"
+                    cy="67"
+                    r="15"
+                    fill="#F2CA56"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                  />
+                  <path
+                    d="M58 59v16M50 67h16"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3>Drop it here.</h3>
+              <p>Or browse files stored on your device.</p>
+
+              <input
+                id="fileInput"
+                type="file"
+                accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+                hidden
+              >
+
+              <button id="browseButton" type="button" class="browse-button">
+                Browse your files <span aria-hidden="true">&#8599;</span>
+              </button>
+
+              <span class="drop-limit">
+                ONE FILE AT A TIME · UP TO 20 MB
+              </span>
+            </div>
+          </div>
+
+          <!-- Action panel -->
+          <div class="action-pane">
+
+            <div class="action-pane-top">
+              <span class="pane-index">RUN INSPECTION</span>
+              <span class="pane-stamp">TAGRIVO</span>
+            </div>
+
+            <h3>Review before you share.</h3>
+
+            <p class="action-explainer">
+              We'll check the metadata fields this version supports
+              and show you how the risk score was calculated.
+            </p>
+
+            <div class="file-preview" id="filePreview" hidden>
+              <div class="file-identity">
+                <span class="file-symbol" aria-hidden="true">FILE</span>
+
+                <div class="file-details">
+                  <strong id="selectedName"></strong>
+                  <span id="selectedSize"></span>
+                </div>
+              </div>
+
+              <button id="removeButton" type="button" class="remove-button">
+                Remove
+              </button>
+            </div>
+
+            <button type="button" id="scanButton" class="scan-button" disabled>
+              Run Privacy Audit &#8594;
+            </button>
+
+            <p class="action-fineprint">
+              Nothing is overwritten during inspection.
+              The score reflects supported metadata only.
+            </p>
+
+          </div>
+        </div>
+
+        <div class="under-workbench" role="note">
+          <strong>PLEASE VERIFY INDEPENDENTLY.</strong>
+          <span>
+            Automated checks cannot detect every privacy issue.
+            Open any cleaned copy and inspect it yourself before distribution.
+          </span>
+        </div>
+
+        <!-- Existing JavaScript renders audit results here -->
+        <div
+          id="resultsPanel"
+          class="results-panel"
+          aria-live="polite"
+          aria-label="Audit and sanitization results"
+          hidden
+        ></div>
+
+      </div>
+    </section>
+
+    <!-- Methodology: ledger instead of cards -->
+    <section class="ledger-section" id="method" aria-labelledby="method-title">
+      <div class="container">
+
+        <div class="ledger-header">
+          <div>
+            <p class="micro-label">02 / HOW IT WORKS</p>
+            <h2 id="method-title">One file, three decisions.</h2>
+          </div>
+          <p>
+            Clear findings, a separate output, and an independent final check.
+          </p>
+        </div>
+
+        <div class="ledger">
+          <div class="ledger-line">
+            <span class="ledger-number">01</span>
+            <h3>Inspect</h3>
+            <p>Read detected metadata, technical details and risk categories.</p>
+            <span class="ledger-arrow" aria-hidden="true">&#8599;</span>
+          </div>
+
+          <div class="ledger-line">
+            <span class="ledger-number">02</span>
+            <h3>Sanitize</h3>
+            <p>Rebuild a separate copy with supported metadata removed.</p>
+            <span class="ledger-arrow" aria-hidden="true">&#8599;</span>
+          </div>
+
+          <div class="ledger-line">
+            <span class="ledger-number">03</span>
+            <h3>Verify</h3>
+            <p>Review the follow-up scan, exported reports and file contents.</p>
+            <span class="ledger-arrow" aria-hidden="true">&#8599;</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Safety information -->
+    <section class="notes-section" id="notes" aria-labelledby="notes-title">
+      <div class="container notes-layout">
+
+        <div class="notes-title">
+          <p class="micro-label">03 / READ BEFORE SHARING</p>
+          <h2 id="notes-title">There are limits<br>to a clean scan.</h2>
+          <div class="notes-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="notes-content">
+
+          <details open>
+            <summary>What does a zero risk score mean?</summary>
+            <p>
+              Only that no risk was identified by the supported metadata checks.
+              It does not prove anonymity, overall privacy or file safety.
+            </p>
+          </details>
+
+          <details>
+            <summary>What might still identify someone?</summary>
+            <p>
+              Visible faces, names, addresses, document text and other
+              information in the file itself can remain even after
+              metadata sanitization.
+            </p>
+          </details>
+
+          <details>
+            <summary>What changes when a PDF is sanitized?</summary>
+            <p>
+              PDF pages may be rebuilt as images. Searchable text,
+              hyperlinks, forms, digital signatures and accessibility
+              features may be lost. Compare the copy with the original
+              before using it.
+            </p>
+          </details>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div class="footer-identity">
+        <strong>TagRivo.</strong>
+        <span>Digital Metadata Privacy &amp; Security Auditor</span>
+      </div>
+
+      <p>© 2026 Devyansh Nath Mathur. TagRivo. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+</body>
+</html>

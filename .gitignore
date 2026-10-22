@@ -1,0 +1,46 @@
+
+# TagRivo - Git Ignore
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Python environments
+.venv/
+venv/
+env/
+fairflow/
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Temporary uploads and generated files
+uploads/
+downloads/
+temp/
+tmp/
+outputs/
+sanitized/
+
+# Logs
+*.log
+
+# Testing and build files
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

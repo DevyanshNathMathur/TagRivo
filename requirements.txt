@@ -1,0 +1,6 @@
+Flask>=3.1,<4
+Pillow>=11,<13
+PyMuPDF==2.0
+pandas==3.0.6
+matplotlib>=3.9,<4
+ipykernel>=6.29,<8
