@@ -44,3 +44,5 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+# Generated sample files
+samples/
