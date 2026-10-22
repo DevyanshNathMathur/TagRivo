@@ -2,6 +2,8 @@
 # TagRivo
 ### Digital Metadata Privacy & Security Auditor
 
+Live Application: https://tagrivo.onrender.com/
+
 TagRivo is a Python-based cybersecurity project designed to help users identify potentially sensitive metadata in digital files before sharing them.
 
 Images and PDF documents can contain information beyond their visible content, including device details, timestamps, location information and document properties.
