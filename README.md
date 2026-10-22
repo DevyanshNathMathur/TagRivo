@@ -52,18 +52,6 @@ TagRivo examines supported metadata fields, highlights potential privacy exposur
 5. TagRivo rescans the sanitized output using its supported checks.
 6. The user can download the cleaned file and corresponding reports.
 
-## Running the Application
-
-Open a terminal in the project directory and run:
-
-    python app.py
-
-Open the application in a browser:
-
-    http://127.0.0.1:5001
-
-The required Python dependencies must be installed in the active environment.
-
 ## Important Limitations
 
 TagRivo provides an assistive metadata privacy assessment and does not guarantee anonymity or complete file security.
